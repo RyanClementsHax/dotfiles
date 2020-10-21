@@ -1,5 +1,5 @@
 alias rl='source ~/.zshrc'
-alias devw='cd /c/Users/RTClements/dev'
+alias devw='cd /c/dev'
 alias dev='cd ~/dev'
 alias vsc='code .'
 alias ec='code ~/dev/dotfiles/'

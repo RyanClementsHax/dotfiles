@@ -30,8 +30,9 @@ Also, be sure to change to gitconfig to your own git config, but leave the `cred
 1. I had issues previously with networking in WSL2 while on VPN. The issue seems to have fixed itself so just skip this step and move on.
    If you are having issues though, import `CiscoVPN-Network-Update.xml` as a scheduled task and copy `Cisco.ps1` to `C:\Users\<your user name>\Cisco.ps1`.
    [Relevant GitHub issue](https://github.com/microsoft/WSL/issues/4277#issuecomment-639460712)
-1. Configure docker to use WSL2 backend and support the newly set up distro
-1. Confirm docker is working with `docker ps`. If there are issues, close and reopen wsl and restart docker. That fixed my issues.
+1. If you use docker, configure docker to use WSL2 backend and support the newly set up distro
+   1. Refer to their docs on how to do this
+   1. Confirm docker is working with `docker ps`. If there are issues, close and reopen wsl and restart docker. That fixed my issues.
 1. Run powershell file: `powershell.exe -executionpolicy bypass -file ./powershell/install-dotfiles-and-software.ps1`
    - When prompted, enter password. This will happen multiple times.
    - If this does not work, you can use manual instructions for dotfiles below.
