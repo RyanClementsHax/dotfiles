@@ -6,7 +6,8 @@ Also, be sure to change to gitconfig to your own git config, but leave the `cred
 
 ## Main setup plan
 
-1. Install WSL by running this in powershell as admin. It comes from [Official MS Docs](https://docs.microsoft.com/en-us/windows/wsl/install-win10)
+1. Install WSL 2 on your machine
+1. Enable WSL by running this in powershell as admin. It comes from [Official MS Docs](https://docs.microsoft.com/en-us/windows/wsl/install-win10)
 
    ```powershell
    dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
@@ -22,6 +23,7 @@ Also, be sure to change to gitconfig to your own git config, but leave the `cred
      - You can check your version of Ubuntu by running `lsb_release -a` in the Ubuntu terminal
    - Windows Subsystem for Linux Update
    - Docker
+1. If you already have Ubuntu on your machine, be sure to set its WSL version to 2 by running `wsl --set-version <image name> 2` in powershell
 1. Open Ubuntu distro for the first time to set up username and password within distro. This is independent of Windows password but can be set the same.
    - To change your password later, run `passwd`.
 1. Copy windows Terminal settings that you desire from [here](./WindowsTerminalSettings.jsonc).
