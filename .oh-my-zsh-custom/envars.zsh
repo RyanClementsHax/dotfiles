@@ -1,0 +1,2 @@
+DEFAULT_USER=rtclements
+PROMPT_EOL_MARK=''

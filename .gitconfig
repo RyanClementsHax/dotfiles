@@ -1,0 +1,19 @@
+[core]
+    editor = nano
+#    excludesfile = /home/rtclements/.gitignore
+    autocrlf = input
+[user]
+    name = Ryan Clements
+    email = ryanclementshax@gmail.com
+[http]
+#    sslBackend = openssl
+[alias]
+    cleanup = !git fetch origin --prune && git branch --merged origin/master | grep -v 'master$' | xargs git branch -d
+    info = !~/.git-scripts/gitInfo.sh
+    redo = !git commit -a --amend -C HEAD && git push --force-with-lease
+    compare = "!f() { \
+        OTHER=${2:-$(git symbolic-ref -q HEAD --short)}; \
+        git rev-list \"$1\"...\"$2\" --count --left-right | awk -v A=\"$1\" -v B=\"$OTHER\" '{print A,\"is\",\"\\033[32m\"$1\"\\033[39m\",\"commits ahead of\",B,\"and\",\"\\033[31m\"$2\"\\033[39m\",\"behind\"}'; \
+    }; f"
+[credential]
+    helper = /mnt/c/Program\\ Files/Git/mingw64/libexec/git-core/git-credential-manager.exe
