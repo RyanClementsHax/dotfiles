@@ -26,22 +26,22 @@ Also, be sure to change to gitconfig to your own git config, but leave the `cred
 1. If you already have Ubuntu on your machine, be sure to set its WSL version to 2 by running `wsl --set-version <image name> 2` in powershell
 1. Open Ubuntu distro for the first time to set up username and password within distro. This is independent of Windows password but can be set the same.
    - To change your password later, run `passwd`.
-1. Copy windows Terminal settings that you desire from [here](./WindowsTerminalSettings.jsonc).
+1. Copy windows Terminal settings that you desire from [here](./windows-terminal/WindowsTerminalSettings.jsonc).
 1. Might still need to install [Cascadia Code](https://docs.microsoft.com/en-us/windows/terminal/cascadia-code).
    - Configure VS Code to use correct font `"terminal.integrated.fontFamily": "Cascadia Code PL"`
 1. I had issues previously with networking in WSL2 while on VPN. The issue seems to have fixed itself so just skip this step and move on.
-   If you are having issues though, import `CiscoVPN-Network-Update.xml` as a scheduled task and copy `Cisco.ps1` to `C:\Users\<your user name>\Cisco.ps1`.
+   If you are having issues though, import `scripts/windows/vpn/CiscoVPN-Network-Update.xml` as a scheduled task and copy `Cisco.ps1` to `C:\Users\<your user name>\Cisco.ps1`.
    [Relevant GitHub issue](https://github.com/microsoft/WSL/issues/4277#issuecomment-639460712)
 1. If you use docker, configure docker to use WSL2 backend and support the newly set up distro
    1. Refer to their docs on how to do this
    1. Confirm docker is working with `docker ps`. If there are issues, close and reopen wsl and restart docker. That fixed my issues.
-1. Run powershell file: `powershell.exe -executionpolicy bypass -file ./powershell/install-dotfiles-and-software.ps1`
+1. Run powershell file: `powershell.exe -executionpolicy bypass -file ./scripts/windows/vpn/install-dotfiles-and-software.ps1`
    - When prompted, enter password. This will happen multiple times.
    - If this does not work, you can use manual instructions for dotfiles below.
 
 ## Manual instructions for configuring dotfiles
 
-If the powershell script in the last step above (`powershell.exe -executionpolicy bypass -file ./powershell/install-dotfiles-and-software.ps1`) fails, these steps are the manual equivalent
+If the powershell script in the last step above (`powershell.exe -executionpolicy bypass -file ./scripts/windows/vpn/install-dotfiles-and-software.ps1`) fails, these steps are the manual equivalent
 
 1. Clone git repo inside distro
 
@@ -70,11 +70,11 @@ If the powershell script in the last step above (`powershell.exe -executionpolic
    - If the dotfiles already exist, the script will rename them with `.<Date-Time>.bak` appended to the end
 
    ```bash
-   chmod +x install-dotfiles.bash
-   ./install-dotfiles.bash
+   chmod +x ./scripts/wsl/install-dotfiles.bash
+   ./scripts/wsl/install-dotfiles.bash
 
    # Alternatively, instead of using chmod, you could do:
-   bash install-dotfiles.bash
+   bash ./scripts/wsl/install-dotfiles.bash
    ```
 
 1. Install desired software
@@ -82,7 +82,7 @@ If the powershell script in the last step above (`powershell.exe -executionpolic
    - This is not safe to re-run. Manually re-run pieces for updates, but not the whole thing.
 
    ```bash
-   bash ./install-software.bash
+   bash ./scripts/wsl/install-software.bash
    ```
 
 ## Migrating ssh keys
@@ -108,6 +108,6 @@ sudo chmod 644 ~/.ssh/known_hosts
 
 ## Testing script with fresh WSL Distro
 
-1. Run `.\powershell\create-throwaway-distro.ps1`
+1. Run `.\scripts\windows\create-throwaway-distro.ps1`
 1. Verify everything looks good.
 1. Delete throw away distro: `wsl.exe --unregister ubuntu-throwaway-2004`

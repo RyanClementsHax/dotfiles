@@ -2,7 +2,7 @@
 <Task version="1.2" xmlns="http://schemas.microsoft.com/windows/2004/02/mit/task">
   <RegistrationInfo>
     <Date>2020-08-19T15:19:53.9897623</Date>
-    <Author>INFINITEENERGY\RTClements</Author>
+    <Author>RTClements</Author>
     <URI>\CiscoVPN-Network-Update</URI>
   </RegistrationInfo>
   <Triggers>
