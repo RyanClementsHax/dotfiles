@@ -3,10 +3,9 @@
 SCRIPTPATH=$(dirname $(readlink -f "$0") )
 
 FILES=(
-  .oh-my-zsh-custom
   .git-scripts
   .gitconfig
-  .zshrc
+  .bashrc
 )
 
 for FILE in ${FILES[@]}; do
@@ -20,9 +19,9 @@ for FILE in ${FILES[@]}; do
     echo "Linking $SCRIPTPATH/$FILE to $HOME/$FILE"
     ln -sf $SCRIPTPATH/$FILE ~/$FILE
 
-    fi
+  fi
 done
 
 chmod 700 -R $HOME/.git-scripts
 # chmod -R 666 $HOME/.gitconfig
-chmod 644 $HOME/.zshrc
+chmod 644 $HOME/.bashrc
