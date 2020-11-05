@@ -30,18 +30,19 @@ Also, be sure to change to gitconfig to your own git config, but leave the `cred
 1. Might still need to install [Cascadia Code](https://docs.microsoft.com/en-us/windows/terminal/cascadia-code).
    - Configure VS Code to use correct font `"terminal.integrated.fontFamily": "Cascadia Code PL"`
 1. I had issues previously with networking in WSL2 while on VPN. The issue seems to have fixed itself so just skip this step and move on.
-   If you are having issues though, import `scripts/windows/vpn/CiscoVPN-Network-Update.xml` as a scheduled task and copy `Cisco.ps1` to `C:\Users\<your user name>\Cisco.ps1`.
+   If you are having issues though, import `vpn/CiscoVPN-Network-Update.xml` as a scheduled task and copy `Cisco.ps1` to `C:\Users\<your user name>\Cisco.ps1`.
    [Relevant GitHub issue](https://github.com/microsoft/WSL/issues/4277#issuecomment-639460712)
 1. If you use docker, configure docker to use WSL2 backend and support the newly set up distro
    1. Refer to their docs on how to do this
    1. Confirm docker is working with `docker ps`. If there are issues, close and reopen wsl and restart docker. That fixed my issues.
-1. Run powershell file: `powershell.exe -executionpolicy bypass -file ./scripts/windows/vpn/install-dotfiles-and-software.ps1`
+1. Run powershell file: `powershell.exe -executionpolicy bypass -file ./install-dotfiles-and-software.wsl.ps1`
    - When prompted, enter password. This will happen multiple times.
    - If this does not work, you can use manual instructions for dotfiles below.
+1. If you want to install the windows specifc dotfiles on a windows specific terminal like git bash, then clone this repo on your windows file system and run `./install-dotfiles.windows.bash` from the root directory of this project.
 
 ## Manual instructions for configuring dotfiles
 
-If the powershell script in the last step above (`powershell.exe -executionpolicy bypass -file ./scripts/windows/vpn/install-dotfiles-and-software.ps1`) fails, these steps are the manual equivalent
+If the powershell script in the last step above (`powershell.exe -executionpolicy bypass -file ./install-dotfiles-and-software.wsl.ps1`) fails, these steps are the manual equivalent
 
 1. Clone git repo inside distro
 
@@ -57,7 +58,7 @@ If the powershell script in the last step above (`powershell.exe -executionpolic
      isn't already set up (It probably already is setup)
 
      ```bash
-     git clone -c credential.helper="/mnt/c/Program\\ Files/Git/mingw64/libexec/git-core/git-credential-manager.exe" https://github.com/RyanClementsHax/dotfiles.git
+     git clone -c credential.helper="/c/Program\\ Files/Git/mingw64/libexec/git-core/git-credential-manager.exe" https://github.com/RyanClementsHax/dotfiles.git
 
      # Once the script is run, this will come from global ~/.gitconfig
      # so we are unsetting it here. This is optional to do.
@@ -70,11 +71,11 @@ If the powershell script in the last step above (`powershell.exe -executionpolic
    - If the dotfiles already exist, the script will rename them with `.<Date-Time>.bak` appended to the end
 
    ```bash
-   chmod +x ./scripts/wsl/install-dotfiles.bash
-   ./scripts/wsl/install-dotfiles.bash
+   chmod +x ./install-dotfiles.wsl.bash
+   ./install-dotfiles.wsl.bash
 
    # Alternatively, instead of using chmod, you could do:
-   bash ./scripts/wsl/install-dotfiles.bash
+   ./install-dotfiles.wsl.bash
    ```
 
 1. Install desired software
@@ -82,7 +83,7 @@ If the powershell script in the last step above (`powershell.exe -executionpolic
    - This is not safe to re-run. Manually re-run pieces for updates, but not the whole thing.
 
    ```bash
-   bash ./scripts/wsl/install-software.bash
+   ./install-software.bash
    ```
 
 ## Migrating ssh keys
@@ -108,6 +109,6 @@ sudo chmod 644 ~/.ssh/known_hosts
 
 ## Testing script with fresh WSL Distro
 
-1. Run `.\scripts\windows\create-throwaway-distro.ps1`
+1. Run `powershell.exe -executionpolicy bypass -file ./create-throwaway-distro.ps1`
 1. Verify everything looks good.
 1. Delete throw away distro: `wsl.exe --unregister ubuntu-throwaway-2004`
