@@ -21,7 +21,7 @@ alias dcb='dc build'
 
 # misc
 alias rl='source ~/.bashrc'
-alias rmbak='find ~ -maxdepth 1 -name '**.bak' -exec rm -r {} +'
+alias rmbak='find ~ -maxdepth 1 -name "**.bak" -exec rm -r {} +'
 alias dev='cd /c/dev'
 alias vsc='code .'
 alias ec='code /c/dev/dotfiles/'
