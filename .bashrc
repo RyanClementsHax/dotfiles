@@ -21,10 +21,10 @@ alias dcb='dc build'
 
 # misc
 alias rl='source ~/.bashrc'
-alias rmbak='find ~ -maxdepth 1 -name '**.bak' -exec rm -r {} +'
-alias dev='cd ~/dev'
+alias rmbak='find ~ -maxdepth 1 -name "**.bak" -exec rm -r {} +'
+alias dev='cd /c/dev'
 alias vsc='code .'
-alias ec='code ~/dev/dotfiles/'
+alias ec='code /c/dev/dotfiles/'
 alias fs='explorer .'
 vs(){
   explorer.exe *.sln;
