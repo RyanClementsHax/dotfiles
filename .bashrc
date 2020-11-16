@@ -26,7 +26,4 @@ alias dev='cd /c/dev'
 alias vsc='code .'
 alias ec='code /c/dev/dotfiles/'
 alias fs='explorer .'
-vs(){
-  explorer.exe *.sln;
-  exit 0;
-}
+alias vs='explorer.exe *.sln'
