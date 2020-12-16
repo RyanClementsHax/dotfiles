@@ -1,7 +1,7 @@
 [core]
     editor = nano
 #    excludesfile = /home/ryanclementshax/.gitignore
-    autocrlf = input
+	autocrlf = false
 [user]
     name = Ryan Clements
     email = ryanclementshax@gmail.com
