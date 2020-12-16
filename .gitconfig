@@ -1,6 +1,6 @@
 [core]
     editor = nano
-#    excludesfile = /home/rtclements/.gitignore
+#    excludesfile = /home/ryanclementshax/.gitignore
     autocrlf = input
 [user]
     name = Ryan Clements

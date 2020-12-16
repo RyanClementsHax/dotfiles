@@ -28,7 +28,7 @@
                 "name": "Ubuntu-20.04",
                 "fontFace": "Cascadia Code PL",
                 "source": "Windows.Terminal.Wsl",
-                "startingDirectory": "//wsl$/Ubuntu-20.04/home/rtclements/dev"
+                "startingDirectory": "//wsl$/Ubuntu-20.04/home/ryanclementshax/dev"
             },
             {
                 "guid": "{4af6d701-26a7-42df-84ba-7dc9f3f0cf3d}",

@@ -1,20 +1,12 @@
 # dotfiles
 
-If anyone wants to use this repo that is not me, please fork it and change `rtclements` everywhere to your own username.
+If anyone wants to use this repo that is not me, please fork it and change `ryanclementshax` everywhere to your own username.
 Also, be sure to change to gitconfig to your own git config, but leave the `credential` section in place.
 **NEVER** Commit back sesitive information within any file such as `.ssh`
 
 ## Main setup plan
 
-1. Install WSL 2 on your machine
-1. Enable WSL by running this in powershell as admin. It comes from [Official MS Docs](https://docs.microsoft.com/en-us/windows/wsl/install-win10)
-
-   ```powershell
-   dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
-   dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
-   ```
-
-1. In a non-admin powershell, run this command: `wsl --set-default-version 2`
+1. Install WSL 2 on your machine [Official MS Docs](https://docs.microsoft.com/en-us/windows/wsl/install-win10)
 1. Install these apps if they aren't already installed.
    - Windows Terminal
    - Ubuntu
