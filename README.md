@@ -30,7 +30,7 @@ Also, be sure to change to gitconfig to your own git config, but leave the `cred
 1. Run powershell file: `powershell.exe -executionpolicy bypass -file ./install-dotfiles-and-software.wsl.ps1`
    - When prompted, enter password. This will happen multiple times.
    - If this does not work, you can use manual instructions for dotfiles below.
-1. If you want to install the windows specifc dotfiles on a windows specific terminal like git bash, then clone this repo on your windows file system and run `./install-dotfiles.windows.bash` from the root directory of this project.
+1. If you want to install the windows specifc dotfiles on a windows specific terminal like git bash, then clone this repo on your windows file system and run `bash ./install-dotfiles.windows.bash` from the root directory of this project.
 1. If your git credentials change per machine you set up these dotfiles on, be sure to update the `.gitconfig` in the home directory
 
 ## Manual instructions for configuring dotfiles
