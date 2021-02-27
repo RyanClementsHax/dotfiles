@@ -145,16 +145,17 @@ prompt_git() {
     vcs_info
     echo -n "${ref/refs\/heads\//$PL_BRANCH_CHAR }${vcs_info_msg_0_%% }${mode}"
 
-    remote=$(git for-each-ref --format='%(upstream:short)' $(git symbolic-ref -q HEAD))
-    ahead=$(git rev-list "$remote..HEAD" --count)
-    behind=$(git rev-list "HEAD..$remote" --count)
+    defaultBranch=$(git symbolic-ref -q HEAD | sed 's@^refs/heads/@@')
+    remote="origin/$defaultBranch"
+    ahead=$(git rev-list "$remote..HEAD" --count) 2>/dev/null 
+    behind=$(git rev-list "HEAD..$remote" --count) 2>/dev/null 
 
     [[ $ahead -gt 0 ]] && prompt_segment $bg green "%{%F{green}%}$ahead↑"
     [[ $behind -gt 0 ]] && prompt_segment $bg red "$behind↓"
 
-    if [[ $remote != 'origin/master' ]]; then
-      ahead=$(git rev-list "origin/master..HEAD" --count)
-      behind=$(git rev-list "HEAD..origin/master" --count)
+    if [[ $remote != "origin/$defaultBranch" ]]; then
+      ahead=$(git rev-list "origin/$defaultBranch..HEAD" --count)
+      behind=$(git rev-list "HEAD..origin/$defaultBranch" --count)
 
       [[ $ahead -gt 0 || $behind -gt 0 ]] && prompt_segment $bg magenta "❯"
       [[ $ahead -gt 0 ]] &&  prompt_segment $bg green "$ahead↑"
