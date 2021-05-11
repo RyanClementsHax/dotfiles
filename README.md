@@ -2,12 +2,12 @@
 
 If anyone wants to use this repo that is not me, please fork it and change `ryanclementshax` everywhere to your own username.
 Also, be sure to change to gitconfig to your own git config, but leave the `credential` section in place.
-**NEVER** Commit back sesitive information within any file such as `.ssh`
+**NEVER** Commit back sesitive information within any file such as `.ssh`. If you totally screw up the wsl setup, you can delete the wsl instance by running `wsl.exe --unregister Ubuntu-20.04` in cmd.
 
 ## Main setup plan
 
 1. Install WSL 2 on your machine [Official MS Docs](https://docs.microsoft.com/en-us/windows/wsl/install-win10)
-1. Install these apps if they aren't already installed.
+2. Install these apps if they aren't already installed.
    - Windows Terminal
    - Ubuntu
      - Alternatively, you can side-load any `.tar.gz` root file system with `wsl --import`. See test script for example.
@@ -15,23 +15,28 @@ Also, be sure to change to gitconfig to your own git config, but leave the `cred
      - You can check your version of Ubuntu by running `lsb_release -a` in the Ubuntu terminal
    - Windows Subsystem for Linux Update
    - Docker
-1. If you already have Ubuntu on your machine, be sure to set its WSL version to 2 by running `wsl --set-version <image name> 2` in powershell
-1. Open Ubuntu distro for the first time to set up username and password within distro. This is independent of Windows password but can be set the same.
+3. If you already have Ubuntu on your machine, be sure to set its WSL version to 2 by running `wsl --set-version <image name> 2` in powershell
+4. Open Ubuntu distro for the first time to set up username and password within distro. This is independent of Windows password but can be set the same.
    - To change your password later, run `passwd`.
-1. Copy windows Terminal settings that you desire from [here](./windows-terminal/WindowsTerminalSettings.jsonc).
-1. Might still need to install [Cascadia Code](https://docs.microsoft.com/en-us/windows/terminal/cascadia-code).
+5. Copy windows Terminal settings that you desire from [here](./windows-terminal/settings.json).
+6. Might still need to install [Cascadia Code](https://docs.microsoft.com/en-us/windows/terminal/cascadia-code).
    - Configure VS Code to use correct font `"terminal.integrated.fontFamily": "Cascadia Code PL"`
-1. I had issues previously with networking in WSL2 while on VPN. The issue seems to have fixed itself so just skip this step and move on.
+7. I had issues previously with networking in WSL2 while on VPN. The issue seems to have fixed itself so just skip this step and move on.
    If you are having issues though, import `vpn/CiscoVPN-Network-Update.xml` as a scheduled task and copy `Cisco.ps1` to `C:\Users\<your user name>\Cisco.ps1`.
    [Relevant GitHub issue](https://github.com/microsoft/WSL/issues/4277#issuecomment-639460712)
-1. If you use docker, configure docker to use WSL2 backend and support the newly set up distro
+8. If you use docker, configure docker to use WSL2 backend and support the newly set up distro
    1. Refer to their docs on how to do this
-   1. Confirm docker is working with `docker ps`. If there are issues, close and reopen wsl and restart docker. That fixed my issues.
-1. Run powershell file: `powershell.exe -executionpolicy bypass -file ./install-dotfiles-and-software.wsl.ps1`
+   2. Confirm docker is working with `docker ps`. If there are issues, close and reopen wsl and restart docker. That fixed my issues.
+9. Run powershell file: `powershell.exe -executionpolicy bypass -file ./install-dotfiles-and-software.wsl.ps1`
    - When prompted, enter password. This will happen multiple times.
    - If this does not work, you can use manual instructions for dotfiles below.
-1. If you want to install the windows specifc dotfiles on a windows specific terminal like git bash, then clone this repo on your windows file system and run `bash ./install-dotfiles.windows.bash` from the root directory of this project.
-1. If your git credentials change per machine you set up these dotfiles on, be sure to update the `.gitconfig` in the home directory
+10. If you want to install the windows specifc dotfiles on a windows specific terminal like git bash, then clone this repo on your windows file system and run `bash ./install-dotfiles.windows.bash` from the root directory of this project.
+11. If your git credentials change per machine you set up these dotfiles on, be sure to update the `.gitconfig` in the home directory
+
+## Cypress
+- You will need to add one line to `/etc/sudoers.d/dbus` after installing
+  - Run: `sudo visudo -f /etc/sudoers.d/dbus`, then add `<user name> ALL = (root) NOPASSWD: /etc/init.d/dbus` where `<user name>` is replaced by your username in wsl
+- You will need to install [VcXsrv](https://sourceforge.net/projects/vcxsrv/) on windows and configure it as specified in [this](https://nickymeuleman.netlify.app/blog/gui-on-wsl2-cypress) post in order to run the Cypress gui within wsl
 
 ## Manual instructions for configuring dotfiles
 
@@ -58,7 +63,7 @@ If the powershell script in the last step above (`powershell.exe -executionpolic
      cd dotfiles && git config --unset credential.helper
      ```
 
-1. Install dotfiles
+2. Install dotfiles
 
    - This can be re-run many times safely to link new files added to repo
    - If the dotfiles already exist, the script will rename them with `.<Date-Time>.bak` appended to the end
@@ -71,7 +76,7 @@ If the powershell script in the last step above (`powershell.exe -executionpolic
    bash ./install-dotfiles.wsl.bash
    ```
 
-1. Install desired software
+3. Install desired software
    - This will prompt you for your password up to two times and switch default shell to zsh
    - This is not safe to re-run. Manually re-run pieces for updates, but not the whole thing.
 
@@ -103,5 +108,12 @@ sudo chmod 644 ~/.ssh/known_hosts
 ## Testing script with fresh WSL Distro
 
 1. Run `powershell.exe -executionpolicy bypass -file ./create-throwaway-distro.ps1`
-1. Verify everything looks good.
-1. Delete throw away distro: `wsl.exe --unregister ubuntu-throwaway-2004`
+2. Verify everything looks good.
+3. Delete throw away distro: `wsl.exe --unregister ubuntu-throwaway-2004`
+
+## Notes
+
+- This uses zsh which is a sh shell at heart so running bash scripts directly may create funky errors
+- If you would prefer to not install zsh the conversion should be simple
+  - All of the zsh configuration can be ported easily to other shell config files
+  - Just be sure to remove the installation of zsh from the `install-software.wsl.bash` script and replace the zsh files with the files for your preferred shell in `install-dotfiles.wsl.bash`
