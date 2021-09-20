@@ -1,10 +1,10 @@
 [core]
     editor = nano
-#    excludesfile = /home/ryanclementshax/.gitignore
+#    excludesfile = /home/clementsr/.gitignore
 	autocrlf = false
 [user]
     name = Ryan Clements
-    email = ryanclementshax@gmail.com
+    email = clementsr@gottlieb.com
 [http]
 #    sslBackend = openssl
 [alias]

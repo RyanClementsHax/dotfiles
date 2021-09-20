@@ -27,9 +27,9 @@ alias dnuke='docker rm $(docker ps -a -q) && docker rmi $(docker images -a -q)'
 # misc
 alias rl='source ~/.bashrc'
 alias rmbak='find ~ -maxdepth 1 -name "**.bak" -exec rm -r {} +'
-alias dev='cd /c/dev'
+alias dev='cd /c/Users/clementsr/dev'
 alias vsc='code .'
-alias ec='code /c/dev/dotfiles/'
+alias ec='code /c/Users/clementsr/dev/dotfiles/'
 alias fs='explorer .'
 alias vs='explorer.exe *.sln'
 

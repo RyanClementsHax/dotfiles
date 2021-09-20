@@ -1,6 +1,6 @@
 wsl.exe --set-default-version 2
-wsl.exe --set-default Ubuntu-20.04
-wsl.exe --set-version Ubuntu-20.04 2
+wsl.exe --set-default Ubuntu
+wsl.exe --set-version Ubuntu 2
 wsl.exe bash -c "sudo chmod 600 /mnt/c/.ssh/* && \
 sudo chmod 644 /mnt/c/.ssh/*.pub && \
 sudo chmod 644 /mnt/c/.ssh/known_hosts && \

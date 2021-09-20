@@ -2,7 +2,7 @@
 
 If anyone wants to use this repo that is not me, please fork it and change `ryanclementshax` everywhere to your own username.
 Also, be sure to change to gitconfig to your own git config, but leave the `credential` section in place.
-**NEVER** Commit back sesitive information within any file such as `.ssh`. If you totally screw up the wsl setup, you can delete the wsl instance by running `wsl.exe --unregister Ubuntu-20.04` in cmd.
+**NEVER** Commit back sesitive information within any file such as `.ssh`. If you totally screw up the wsl setup, you can delete the wsl instance by running `wsl.exe --unregister Ubuntu` in cmd.
 
 ## Main setup plan
 
