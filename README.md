@@ -33,10 +33,9 @@ Also, be sure to change to gitconfig to your own git config, but leave the `cred
 10. If you want to install the windows specifc dotfiles on a windows specific terminal like git bash, then clone this repo on your windows file system and run `bash ./install-dotfiles.windows.bash` from the root directory of this project.
 11. If your git credentials change per machine you set up these dotfiles on, be sure to update the `.gitconfig` in the home directory
 
-## Cypress
-- You will need to add one line to `/etc/sudoers.d/dbus` after installing
-  - Run: `sudo visudo -f /etc/sudoers.d/dbus`, then add `<user name> ALL = (root) NOPASSWD: /etc/init.d/dbus` where `<user name>` is replaced by your username in wsl
-- You will need to install [VcXsrv](https://sourceforge.net/projects/vcxsrv/) on windows and configure it as specified in [this](https://nickymeuleman.netlify.app/blog/gui-on-wsl2-cypress) post in order to run the Cypress gui within wsl
+## WSLg
+
+Make sure your system can run gui apps by refrencing the [installation docs](https://docs.microsoft.com/en-us/windows/wsl/tutorials/gui-apps) (basically you just need to be on the right windows build, wsl version, and have a special driver installed)
 
 ## Manual instructions for configuring dotfiles
 
@@ -77,6 +76,7 @@ If the powershell script in the last step above (`powershell.exe -executionpolic
    ```
 
 3. Install desired software
+
    - This will prompt you for your password up to two times and switch default shell to zsh
    - This is not safe to re-run. Manually re-run pieces for updates, but not the whole thing.
 
