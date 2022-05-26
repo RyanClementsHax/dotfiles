@@ -3,15 +3,15 @@
   "$schema": "https://aka.ms/terminal-profiles-schema",
   "actions": [
     {
+      "command": "paste",
+      "keys": "ctrl+v"
+    },
+    {
       "command": {
         "action": "copy",
         "singleLine": false
       },
       "keys": "ctrl+c"
-    },
-    {
-      "command": "paste",
-      "keys": "ctrl+v"
     },
     {
       "command": "find",
@@ -28,19 +28,22 @@
   ],
   "copyFormatting": "none",
   "copyOnSelect": false,
-  "defaultProfile": "{07b52e3e-de2c-5db4-bd2d-ba144ed6c273}",
+  "defaultProfile": "{913a14f7-35e6-4dec-9966-11adb0749521}",
+  "launchMode": "default",
   "profiles": {
     "defaults": {},
     "list": [
       {
+        "colorScheme": "Campbell",
+        "commandline": "C:\\WINDOWS\\system32\\wsl.exe -d Ubuntu",
         "font": {
           "face": "Cascadia Code PL"
         },
-        "guid": "{07b52e3e-de2c-5db4-bd2d-ba144ed6c273}",
+        "guid": "{913a14f7-35e6-4dec-9966-11adb0749521}",
         "hidden": false,
-        "name": "Ubuntu-20.04",
-        "source": "Windows.Terminal.Wsl",
-        "startingDirectory": "\\\\wsl.localhost\\Ubuntu-20.04\\home\\rtclements\\dev"
+        "icon": "ms-appx:///ProfileIcons/{9acb9455-ca41-5af7-950f-6bca1bc9722f}.png",
+        "name": "Ubuntu",
+        "startingDirectory": "~/dev"
       },
       {
         "commandline": "C:\\Program Files\\Git\\bin\\bash.exe",
@@ -51,13 +54,11 @@
         "startingDirectory": "C:\\dev"
       },
       {
-        "commandline": "powershell.exe",
         "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
         "hidden": false,
         "name": "Windows PowerShell"
       },
       {
-        "commandline": "cmd.exe",
         "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
         "hidden": false,
         "name": "Command Prompt"
@@ -67,18 +68,6 @@
         "hidden": false,
         "name": "Azure Cloud Shell",
         "source": "Windows.Terminal.Azure"
-      },
-      {
-        "guid": "{f47add03-8663-5e7a-8dfe-771e2d65d155}",
-        "hidden": false,
-        "name": "Developer Command Prompt for VS 2019",
-        "source": "Windows.Terminal.VisualStudio"
-      },
-      {
-        "guid": "{5a31143f-5599-5beb-8f81-ca06a597920e}",
-        "hidden": false,
-        "name": "Developer PowerShell for VS 2019",
-        "source": "Windows.Terminal.VisualStudio"
       }
     ]
   },
@@ -266,6 +255,29 @@
       "selectionBackground": "#FFFFFF",
       "white": "#D3D7CF",
       "yellow": "#C4A000"
+    },
+    {
+      "background": "#300A24",
+      "black": "#171421",
+      "blue": "#0037DA",
+      "brightBlack": "#767676",
+      "brightBlue": "#08458F",
+      "brightCyan": "#2C9FB3",
+      "brightGreen": "#26A269",
+      "brightPurple": "#A347BA",
+      "brightRed": "#C01C28",
+      "brightWhite": "#F2F2F2",
+      "brightYellow": "#A2734C",
+      "cursorColor": "#FFFFFF",
+      "cyan": "#3A96DD",
+      "foreground": "#FFFFFF",
+      "green": "#26A269",
+      "name": "Ubuntu-ColorScheme",
+      "purple": "#881798",
+      "red": "#C21A23",
+      "selectionBackground": "#FFFFFF",
+      "white": "#CCCCCC",
+      "yellow": "#A2734C"
     },
     {
       "background": "#000000",
