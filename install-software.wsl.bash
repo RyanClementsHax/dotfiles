@@ -1,5 +1,13 @@
 #!/bin/bash
 
+
+###############################################################################################################################
+# tools #######################################################################################################################
+###############################################################################################################################
+
+sudo apt-get -y install zip
+sudo apt-get -y install unzip
+
 ###############################################################################################################################
 # personal shell preferences ##################################################################################################
 ###############################################################################################################################
@@ -19,7 +27,7 @@ sudo mount --bind /mnt/c /c
 ###############################################################################################################################
 
 # nvm (npm, Node.js, etc.) - https://docs.microsoft.com/en-us/windows/nodejs/setup-on-wsl2#install-nvm-nodejs-and-npm
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.2/install.sh | bash
 export NVM_DIR=/home/$USER/.nvm
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
@@ -38,15 +46,12 @@ wget https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.
 sudo dpkg -i packages-microsoft-prod.deb
 rm packages-microsoft-prod.deb
 sudo apt-get update
-# sudo apt-get install -y apt-transport-https && \
-# sudo apt-get update
-sudo apt-get install -y dotnet-sdk-3.1 # donet core 3.1
-sudo apt-get install -y dotnet-sdk-5.0 # dotnet 5.0
+sudo apt-get install -y dotnet-sdk-7.0
 
 # make sure to set the JAVA_HOME env var in your path in your profile
 
 # java - https://ubuntu.com/tutorials/install-jre#1-overview
-sudo apt install openjdk-13-jre # java 13
+# sudo apt install openjdk-13-jre # java 13
 
 # rust
 curl --proto '=https' --tlsv1.2 https://sh.rustup.rs -sSf | sh
@@ -78,8 +83,6 @@ tfenv install latest
 ###############################################################################################################################
 # misc ########################################################################################################################
 ###############################################################################################################################
-
-apt-get -y install zip
 
 sudo touch /etc/wsl.conf
 sudo bash -c 'cat > /etc/wsl.conf <<_EOF
