@@ -1,4 +1,5 @@
 export PATH="$(yarn global bin):$PATH"
+export PATH="$HOME/.cargo/bin:$PATH"
 
 # git
 alias ch='git checkout'
