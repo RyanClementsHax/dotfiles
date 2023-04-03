@@ -1,2 +1,2 @@
-export DENO_INSTALL="/home/ryanclementshax/.deno"
+export DENO_INSTALL="$HOME/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
