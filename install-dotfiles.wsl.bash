@@ -1,6 +1,6 @@
 #!/bin/bash
 
-SCRIPTPATH=$(dirname $(readlink -f "$0") )
+SCRIPTPATH=$(dirname $(readlink -f "$0"))
 
 FILES=(
   .oh-my-zsh-custom

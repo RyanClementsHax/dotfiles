@@ -81,7 +81,7 @@ If the powershell script in the last step above (`powershell.exe -executionpolic
    - This is not safe to re-run. Manually re-run pieces for updates, but not the whole thing.
 
    ```bash
-   bash ./install-software.bash
+   bash ./install-software.wsl.bash
    ```
 
 ## Migrating ssh keys
