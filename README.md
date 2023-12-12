@@ -1,8 +1,6 @@
 # dotfiles
 
-If anyone wants to use this repo that is not me, please fork it and change `ryanclementshax` everywhere to your own username.
-Also, be sure to change to gitconfig to your own git config, but leave the `credential` section in place.
-**NEVER** Commit back sesitive information within any file such as `.ssh`. If you totally screw up the wsl setup, you can delete the wsl instance by running `wsl.exe --unregister Ubuntu` in cmd.
+If anyone wants to use this repo that is not me, please fork it and change `ryanclementshax` everywhere to your own username. Also, be sure to change to gitconfig to your own git config. **NEVER** Commit back sesitive information within any file such as `.ssh`. If you totally screw up the wsl setup, you can delete the wsl instance by running `wsl.exe --unregister Ubuntu` in cmd.
 
 ## Main setup plan
 
@@ -49,17 +47,6 @@ If the powershell script in the last step above (`powershell.exe -executionpolic
      ```conf
      [automount]
      options = "metadata,umask=22,fmask=11"
-     ```
-
-   - Setup the [git credential manager](https://github.com/microsoft/Git-Credential-Manager-for-Windows/releases) before cloning if this
-     isn't already set up (It probably already is setup)
-
-     ```bash
-     git clone -c credential.helper="/c/Program\\ Files/Git/mingw64/libexec/git-core/git-credential-manager.exe" https://github.com/RyanClementsHax/dotfiles.git
-
-     # Once the script is run, this will come from global ~/.gitconfig
-     # so we are unsetting it here. This is optional to do.
-     cd dotfiles && git config --unset credential.helper
      ```
 
 2. Install dotfiles
