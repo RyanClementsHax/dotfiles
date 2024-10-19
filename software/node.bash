@@ -23,15 +23,6 @@ nvm install --lts
 
 echo
 echo "---------------"
-echo "Installing Yarn"
-echo "---------------"
-echo
-
-# https://classic.yarnpkg.com/en/docs/install#windows-stable
-curl -o- -L https://yarnpkg.com/install.sh | bash
-
-echo
-echo "---------------"
 echo "Installing pnpm"
 echo "---------------"
 echo
